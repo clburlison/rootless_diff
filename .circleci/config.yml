@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    working_directory: /tmp/rootless_diff
+    docker:
+      - image: clburlison/pylint:py2-wheezy
+    steps:
+      - checkout
+      - run:
+          name: Run tests
+          command: |
+            set -x
+            flake8 .
